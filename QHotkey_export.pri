@@ -1,5 +1,7 @@
 INCLUDEPATH *= $$PWD/QHotkey
 
+include($$PWD/qhotkey.prc)
+
 DEPENDPATH *= $$PWD/QHotkey
 
 OUT_FOLDER = $$absolute_path($$relative_path($$PWD, $$_PRO_FILE_PWD_), $$OUT_PWD)
