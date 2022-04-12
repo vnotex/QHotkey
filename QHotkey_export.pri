@@ -15,3 +15,5 @@ win32:CONFIG(release, debug|release) {
     LIBS += $$OUT_FOLDER/QHotkey/libQHotkey.a
     PRE_TARGETDEPS += $$OUT_FOLDER/QHotkey/libQHotkey.a
 }
+
+include($$PWD/qhotkey.prc)
