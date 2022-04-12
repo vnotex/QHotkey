@@ -1,7 +1,5 @@
 INCLUDEPATH *= $$PWD/QHotkey
 
-include($$PWD/qhotkey.prc)
-
 DEPENDPATH *= $$PWD/QHotkey
 
 OUT_FOLDER = $$absolute_path($$relative_path($$PWD, $$_PRO_FILE_PWD_), $$OUT_PWD)
@@ -17,3 +15,5 @@ win32:CONFIG(release, debug|release) {
     LIBS += $$OUT_FOLDER/QHotkey/libQHotkey.a
     PRE_TARGETDEPS += $$OUT_FOLDER/QHotkey/libQHotkey.a
 }
+
+include($$PWD/qhotkey.prc)
