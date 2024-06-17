@@ -13,7 +13,7 @@
 #include <X11/Xlib.h>
 #include <xcb/xcb.h>
 
-//compability to pre Qt 5.8
+//compatibility to pre Qt 5.8
 #ifndef Q_FALLTHROUGH
 #define Q_FALLTHROUGH() (void)0
 #endif
@@ -132,13 +132,16 @@ quint32 QHotkeyPrivateX11::nativeKeycode(Qt::Key keycode, bool &ok)
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
 	const QNativeInterface::QX11Application *x11Interface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>();
-	Display *display = x11Interface->display();
 #else
 	const bool x11Interface = QX11Info::isPlatformX11();
-	Display *display = QX11Info::display();
 #endif
 
 	if(x11Interface) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+		Display *display = x11Interface->display();
+#else
+		Display *display = QX11Info::display();
+#endif
 		auto res = XKeysymToKeycode(display, keysym);
 		if(res != 0)
 			ok = true;
